@@ -62,15 +62,15 @@ int main()
                     }
                     else
                     {
-                        int tmpCountOfSongs2 = 1;
+                        int tmpCountOfSongs = 1;
                         for (size_t i = 0; i < countOfAllSongs; i++)
                         {
 
-                            if (tmpCountOfSongs2 == option)
+                            if (tmpCountOfSongs == option)
                             {
                                 cout << songs[i].lyricOfSong;
                             }
-                            ++tmpCountOfSongs2;
+                            ++tmpCountOfSongs;
                         }
                     }
                     cout << endl;
