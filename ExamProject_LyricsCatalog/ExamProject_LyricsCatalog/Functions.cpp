@@ -30,315 +30,169 @@ int CheckForCorrect(int endOfRange)
 	}
 }
 
-int ShowListOfSongs(const Songwriter* obj, int countOfAuthor)
+int MainMenu()
+{
+    system("cls");
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |                         ÌÅÍÞ                           |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No1|            ÂÛÂÅÑÒÈ ÑÏÈÑÎÊ ÂÑÅÕ ÏÅÑÅÍ               |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No2|         ÄÎÁÀÂÈÒÜ ÍÎÂÓÞ ÏÅÑÍÞ È Å¨ ÒÅÊÑÒ            |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No3|           ÓÄÀËÈÒÜ ÒÅÊÑÒ ÎÄÍÎÉ ÈÇ ÏÅÑÅÍ             |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No4|          ÈÇÌÅÍÅÍÈÅ ÒÅÊÑÒÀ ÎÄÍÎÉ ÈÇ ÏÅÑÅÍ           |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No5|          ÑÎÕÐÀÍÅÍÈÅ ÒÅÊÑÒÀ ÏÅÑÍÈ Â ÔÀÉË            |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No6|   ÏÎÈÑÊ È ÎÒÎÁÐÀÆÅÍÈÅ ÂÑÅÕ ÏÅÑÅÍ ÎÄÍÎÃÎ ÀÂÒÎÐÀ     |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No7|               ÏÎÈÑÊ ÏÅÑÅÍ ÏÎ ÑËÎÂÓ                 |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No8|                     ÂÛÕÎÄ                          |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |               ÂÛÁÅÐÈÒÅ ÍÓÆÍÛÉ ÏÓÍÊÒ ÌÅÍÞ:              |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t                                 ";
+    int option = CheckForCorrect(9);
+    system("cls");
+    return option;
+}
+
+int InputTextMenu()
+{
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |                           ÌÅÍÞ                         |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No1|             ÂÂÎÄ ÒÅÊÑÒÀ Ñ ÊËÀÂÈÀÒÓÐÛ               |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No2|             ÇÀÃÐÓÇÈÒÜ ÒÅÊÑÒ ÈÇ ÔÀÉËÀ               |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t   |No3|                     ÂÛÕÎÄ                          |\n";
+    cout << "\t\t\t   ----------------------------------------------------------\n";
+    cout << "\t\t\t                                ";
+    int option = CheckForCorrect(4);
+    system("cls");
+    return option;
+}
+
+void ShowListOfSongs(const Songs* obj)
 {
     cout << "\t\t\t   --------------------------------------------------------------\n";
     cout << "\t\t\t   |                       ÑÏÈÑÎÊ ÂÑÅÕ ÏÅÑÅÍ                    |\n";
     cout << "\t\t\t   --------------------------------------------------------------\n";
-    int tmpCountOfSongs = 1;
-    for (size_t i = 0; i < countOfAuthor; i++)
+    for (size_t i = 0; i < countOfAllSongs; i++)
     {
-        int countOfSongs = obj[i].n;
-        for (size_t j = 0; j < countOfSongs; j++)
+        cout << "\t\t\t     " << countOfAllSongs << " | " << "\"" << obj[i].nameOfSong << "\" ~ " << obj[i].songwriter_sName;
+        if (obj[i].yearIsKnown)
         {
-            cout << "\t\t\t   | " << tmpCountOfSongs << " | " << "\"" << obj[i].songs[j].nameOfSong << "\" ~ " << obj[i].songwriter_sName;
-            if (obj[i].songs[j].yearIsKnown)
-            {
-                cout << " ~ " << obj[i].songs[j].yearOfRelease << endl;
-            }
-            else
-            {
-                cout << endl;
-            }
-            ++tmpCountOfSongs;
+            cout << " ~ " << obj[i].yearOfRelease << endl;
+        }
+        else
+        {
+            cout << endl;
         }
     }
-    return tmpCountOfSongs;
 }
-
-int ShowListOfAuthors(const Songwriter* obj, int countOfAuthor)
+void InputTextFromKeyboard(Songs* obj)
 {
-    cout << "\t\t\t   --------------------------------------------------------------\n";
-    cout << "\t\t\t   |                     ÑÏÈÑÎÊ ÂÑÅÕ ÀÂÒÎÐÎÂ                    |\n";
-    cout << "\t\t\t   --------------------------------------------------------------\n";
-    int tmpCountOfAuthors = 1;
-    for (size_t i = 0; i < countOfAuthor; i++)
+    countOfAllSongs++;
+    obj = AddSong(obj);
+    cout << "Ââåäèòå èìÿ àâòîðà: ";
+    getline(cin, obj[countOfAllSongs - 1].songwriter_sName);
+    cout << "Ââåäèòå íàçâàíèå ïåñíè: ";
+    getline(cin, obj[countOfAllSongs - 1].nameOfSong);
+    cout << "\n Èçâåñòåí ëè âàì ãîä âûïóñêà ýòîé ïåñíè?\n1.) Äà\n2.) Íåò\n";
+    int option = CheckForCorrect(3);
+    if (option == 1)
     {
-        cout << "\t\t\t   | " << tmpCountOfAuthors << " | " <<  obj[i].songwriter_sName << endl;
-        for (size_t j = 0; j < obj[i].n; j++)
-        {
-            cout << "\t\t\t      " << "-" << obj[i].songs[j].nameOfSong << endl;
-        }
-        ++tmpCountOfAuthors;
-        cout << endl;
+        cout << "Ââåäèòå åãî: \n";
+        obj[countOfAllSongs - 1].yearIsKnown = true;
+        cin >> obj[countOfAllSongs - 1].yearOfRelease;
+        cin.ignore();
+        system("cls");
     }
-    return tmpCountOfAuthors;
+    else
+    {
+        obj[countOfAllSongs - 1].yearIsKnown = false;
+        system("cls");
+    }
+
+    int countOfStrings = 1;
+
+    for (size_t i = 0; i < countOfStrings; i++)
+    {
+        string line;
+        getline(cin, line);
+        cout << "1 - ââåñòè ñëåäóþùóþ ñòðî÷êó\n";
+        cout << "2 - ýòî âåñü òåêñò, âåðíóòüñÿ â ãëàâíîå ìåíþ\n";
+        int tmpOption = CheckForCorrect(3);
+        system("cls");
+        if (tmpOption == 1)
+        {
+            obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
+
+            cout << obj[countOfAllSongs - 1].lyricOfSong;
+
+            ++countOfStrings;
+        }
+        else
+        {
+            obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
+            cout << "Ãîòîâî!\n";
+            system("pause");
+            system("cls");
+            break;
+        }
+    }
 }
 
-//string* AddStringToArr(string*& lyricOfSong, int countOfStrings)
-//{
-//    string* tempLyricOfSong = new string[countOfStrings];
-//    for (size_t i = 0; i < countOfStrings - 1; i++)
-//    {
-//        for (size_t j = 0; j < lyricOfSong[i].length(); j++)
-//        {
-//            tempLyricOfSong[i] += lyricOfSong[j];
-//        }
-//    }
-//    delete[] lyricOfSong;
-//    lyricOfSong = tempLyricOfSong;
-//    return lyricOfSong;
-//}
-//
-//Songwriter* AddString(Songwriter* obj, int countOfAuthor, int indexOfAuthor)
-//{
-//    Songwriter* tempObj = new Songwriter[countOfAuthor];
-//    for (size_t i = 0; i < countOfAuthor; i++)
-//    {
-//        tempObj[i].n = obj[i].n;
-//        tempObj[i].songwriter_sName = obj[i].songwriter_sName;
-//        for (size_t j = 0; j < obj[i].n; j++)
-//        {
-//            tempObj[i].songs[j].n = obj[i].songs[j].n;
-//            tempObj[i].songs[j].nameOfSong = obj[i].songs[j].nameOfSong;
-//            tempObj[i].songs[j].yearIsKnown = obj[i].songs[j].yearIsKnown;
-//            tempObj[i].songs[j].yearOfRelease = obj[i].songs[j].yearOfRelease;
-//            if (i == (indexOfAuthor) && j == (obj[i].n - 1))
-//            {
-//                for (size_t k = 0; k < obj[i].songs[j].n - 1; k++)
-//                {
-//                    tempObj[i].songs[j].lyricOfSong[k] = obj[i].songs[j].lyricOfSong[k];
-//                }
-//                continue;
-//            }
-//            for (size_t k = 0; k < obj[i].songs[j].n; k++)
-//            {
-//                tempObj[i].songs[j].lyricOfSong[k] = obj[i].songs[j].lyricOfSong[k];
-//            }
-//        }
-//    }
-//    delete[]obj;
-//    obj = tempObj;
-//    return obj;
-//}
-//
-//Songwriter* AddStringFromTxt(Songwriter* obj, int countOfAuthor)
-//{
-//    Songwriter* tempObj = new Songwriter[countOfAuthor];
-//    for (size_t i = 0; i < countOfAuthor; i++)
-//    {
-//        tempObj[i].n = obj[i].n;
-//        tempObj[i].songwriter_sName = obj[i].songwriter_sName;
-//        for (size_t j = 0; j < obj[i].n; j++)
-//        {
-//            tempObj[i].songs[j].n = obj[i].songs[j].n;
-//            tempObj[i].songs[j].nameOfSong = obj[i].songs[j].nameOfSong;
-//            tempObj[i].songs[j].yearIsKnown = obj[i].songs[j].yearIsKnown;
-//            tempObj[i].songs[j].yearOfRelease = obj[i].songs[j].yearOfRelease;
-//            if (i == (countOfAuthor - 1) && j == (obj[i].n - 1))
-//            {
-//                break;
-//            }
-//            for (size_t k = 0; k < obj[i].songs[j].n; k++)
-//            {
-//                tempObj[i].songs[j].lyricOfSong[k] = obj[i].songs[j].lyricOfSong[k];
-//            }
-//        }
-//    }
-//    delete[]obj;
-//    obj = tempObj;
-//    return obj;
-//}
-//
-//Songwriter* AddStringFromTxt(Songwriter* obj, int countOfAuthor, int indexOfAuthor)
-//{
-//    Songwriter* tempObj = new Songwriter[countOfAuthor];
-//    for (size_t i = 0; i < countOfAuthor; i++)
-//    {
-//        tempObj[i].n = obj[i].n;
-//        tempObj[i].songwriter_sName = obj[i].songwriter_sName;
-//        for (size_t j = 0; j < obj[i].n; j++)
-//        {
-//            tempObj[i].songs[j].n = obj[i].songs[j].n;
-//            tempObj[i].songs[j].nameOfSong = obj[i].songs[j].nameOfSong;
-//            tempObj[i].songs[j].yearIsKnown = obj[i].songs[j].yearIsKnown;
-//            tempObj[i].songs[j].yearOfRelease = obj[i].songs[j].yearOfRelease;
-//            if (i == (indexOfAuthor - 1) && j == (obj[i].n - 1))
-//            {
-//                break;
-//            }
-//            for (size_t k = 0; k < obj[i].songs[j].n; k++)
-//            {
-//                tempObj[i].songs[j].lyricOfSong[k] = obj[i].songs[j].lyricOfSong[k];
-//            }
-//        }
-//    }
-//    delete[]obj;
-//    obj = tempObj;
-//    return obj;
-//}
-//
-//Songwriter* AddSong(Songwriter* obj, int countOfAuthor)
-//{
-//    Songwriter* tempObj = new Songwriter[countOfAuthor];
-//    for (size_t i = 0; i < countOfAuthor; i++)
-//    {
-//        tempObj[i].n = obj[i].n;
-//        tempObj[i].songwriter_sName = obj[i].songwriter_sName;
-//        for (size_t j = 0; j < obj[i].n - 1; j++)
-//        {
-//            tempObj[i].songs[j].n = obj[i].songs[j].n;
-//            tempObj[i].songs[j].nameOfSong = obj[i].songs[j].nameOfSong;
-//            tempObj[i].songs[j].yearIsKnown = obj[i].songs[j].yearIsKnown;
-//            tempObj[i].songs[j].yearOfRelease = obj[i].songs[j].yearOfRelease;
-//            for (size_t k = 0; k < obj[i].songs[j].n; k++)
-//            {
-//                tempObj[i].songs[j].lyricOfSong[k] = obj[i].songs[j].lyricOfSong[k];
-//            }
-//        }
-//    }
-//    delete[]obj;
-//    obj = tempObj;
-//    return obj;
-//}
-//
-Songwriter* AddAuthor(Songwriter* obj, int countOfAuthor)
+Songs* AddSong(Songs* obj)
 {
-    Songwriter* tempObj = new Songwriter[countOfAuthor];
-    for (size_t i = 0; i < countOfAuthor - 1; i++)
+    Songs* tempObj = new Songs[countOfAllSongs];
+    for (size_t i = 0; i < countOfAllSongs - 1; i++)
     {
-        tempObj[i].n = obj[i].n;
-        tempObj[i].songs = obj[i].songs;
+        tempObj[i].lyricOfSong = obj[i].lyricOfSong;
+        tempObj[i].nameOfSong = obj[i].nameOfSong;
         tempObj[i].songwriter_sName = obj[i].songwriter_sName;
-        for (size_t j = 0; j < obj[i].n; j++)
-        {
-            tempObj[i].songs[j].yearIsKnown = obj[i].songs[j].yearIsKnown;
-            tempObj[i].songs[j].nameOfSong = obj[i].songs[j].nameOfSong;
-            tempObj[i].songs[j].yearOfRelease = obj[i].songs[j].yearOfRelease;
-            tempObj[i].songs[j].lyricOfSong = obj[i].songs[j].lyricOfSong;
-        }
+        tempObj[i].wordIsHere = obj[i].wordIsHere;
+        tempObj[i].yearIsKnown = obj[i].yearIsKnown;
+        tempObj[i].yearOfRelease = obj[i].yearOfRelease;
     }
-    delete[]obj;
+    delete[] obj;
     obj = tempObj;
     return obj;
 }
-//
-////void AddNewSongNewAuthor(Songwriter* obj, int countOfAuthor, int& countOfSongs)
-////{
-////    cout << "Ââåäèòå èìÿ àâòîðà: ";
-////    getline(cin, obj[countOfAuthor - 1].songwriter_sName);
-////    cout << "Ââåäèòå íàçâàíèå ïåñíè: ";
-////    getline(cin, obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].nameOfSong);
-////    cout << "\n Èçâåñòåí ëè âàì ãîä âûïóñêà ýòîé ïåñíè?\n1.) Äà.\n2.) Íåò\n";
-////    int tmpOption3 = CheckForCorrect(3);
-////    system("cls");
-////    if (tmpOption3 == 1)
-////    {
-////        cout << "Ââåäèòå åãî: \n";
-////        obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].yearIsKnown = true;
-////        cin >> obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].yearOfRelease;
-////        cin.ignore();
-////    }
-////    else
-////    {
-////        obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].yearIsKnown = false;
-////    }
-////    int countOfStrings = 1;
-////    for (size_t i = 0; i < countOfStrings; i++)
-////    {
-////        getline(cin, obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].lyricOfSong[i]);
-////        cout << "1 - ââåñòè ñëåäóþùóþ ñòðî÷êó\n";
-////        cout << "2 - ýòî âåñü òåêñò, âåðíóòüñÿ â ãëàâíîå ìåíþ\n";
-////        int tmpOption = CheckForCorrect(3);
-////        system("cls");
-////        if (tmpOption == 1)
-////        {
-////            obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].lyricOfSong[i] += "\n";
-////            for (size_t i = 0; i < countOfStrings; i++)
-////            {
-////                cout << obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].lyricOfSong[i];
-////            }
-////            ++countOfStrings;
-////            obj[countOfAuthor - 1].songs[obj[countOfAuthor - 1].n - 1].n = countOfStrings;
-////            obj = AddString(obj, countOfAuthor);
-////        }
-////        else
-////        {
-////            ++countOfSongs;
-////            break;
-////        }
-////    }
-////}
-//
-//void SetFromTxt(Songwriter* obj, string& lyrics, int indexOfAuthor, int countOfStrings)
+
+//int ShowListOfAuthors(const Songwriter* obj, int countOfAuthor)
 //{
-//    for (size_t i = 0, j = 0; i < countOfStrings; i++)
+//    cout << "\t\t\t   --------------------------------------------------------------\n";
+//    cout << "\t\t\t   |                     ÑÏÈÑÎÊ ÂÑÅÕ ÀÂÒÎÐÎÂ                    |\n";
+//    cout << "\t\t\t   --------------------------------------------------------------\n";
+//    int tmpCountOfAuthors = 1;
+//    for (size_t i = 0; i < countOfAuthor; i++)
 //    {
-//        if (i == countOfStrings - 1)
+//        cout << "\t\t\t   | " << tmpCountOfAuthors << " | " <<  obj[i].songwriter_sName << endl;
+//        for (size_t j = 0; j < obj[i].n; j++)
 //        {
-//            while (lyrics[j] != '\0')
-//            {
-//                obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].lyricOfSong[i] += lyrics[j];
-//            }
-//            break;
+//            cout << "\t\t\t      " << "-" << obj[i].songs[j].nameOfSong << endl;
 //        }
-//        for (; j < lyrics.length(); j++)
-//        {
-//            if (lyrics[j] != '\n')
-//            {
-//                obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].lyricOfSong[i] += lyrics[j];
-//            }
-//            else
-//            {
-//                obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].lyricOfSong[i] += "\n";
-//            }
-//        }
+//        ++tmpCountOfAuthors;
+//        cout << endl;
 //    }
+//    return tmpCountOfAuthors;
 //}
-//
-//void AddNewSongForSelectedAuthor(Songwriter* obj, int indexOfAuthor, int countOfAuthor, int& countOfSongs)
-//{
-//    obj[indexOfAuthor - 1].n++;
-//    obj = AddSong(obj, indexOfAuthor);
-//    cout << "Ââåäèòå íàçâàíèå ïåñíè: ";
-//    getline(cin, obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].nameOfSong);
-//    cout << "\n Èçâåñòåí ëè âàì ãîä âûïóñêà ýòîé ïåñíè?\n1.) Äà.\n2.) Íåò\n";
-//    int tmpOption3 = CheckForCorrect(3);
-//    system("cls");
-//    if (tmpOption3 == 1)
-//    {
-//        cout << "Ââåäèòå åãî: \n";
-//        obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].yearIsKnown = true;
-//        cin >> obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].yearOfRelease;
-//        cin.ignore();
-//    }
-//    else
-//    {
-//        obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].yearIsKnown = false;
-//    }
-//    int countOfStrings = 1;
-//    for (size_t i = 0; i < countOfStrings; i++)
-//    {
-//        getline(cin, obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].lyricOfSong[i]);
-//        cout << "1 - ââåñòè ñëåäóþùóþ ñòðî÷êó\n";
-//        cout << "2 - ýòî âåñü òåêñò, âåðíóòüñÿ â ãëàâíîå ìåíþ\n";
-//        int tmpOption = CheckForCorrect(3);
-//        system("cls");
-//        if (tmpOption == 1)
-//        {
-//            obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].lyricOfSong[i] += "\n";
-//            for (size_t i = 0; i < countOfStrings; i++)
-//            {
-//                cout << obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].lyricOfSong[i];
-//            }
-//            ++countOfStrings;
-//            obj[indexOfAuthor - 1].songs[obj[indexOfAuthor - 1].n - 1].n = countOfStrings;
-//            obj = AddString(obj, countOfAuthor, indexOfAuthor - 1);
-//        }
-//        else
-//        {
-//            ++countOfSongs;
-//            break;
-//        }
-//    }
-//}
+
