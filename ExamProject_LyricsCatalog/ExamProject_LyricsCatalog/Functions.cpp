@@ -167,30 +167,12 @@ void InputTextFromKeyboard(Songs* obj)
     }
 }
 
-void InputTextFromFile(Songs* obj)
+void InputTextFromFile(Songs* obj, ifstream& fileIn)
 {
     countOfAllSongs++;
     obj = AddSong(obj);
     
-    ifstream fileIn;
-    while (true)
-    {
-        cout << "Введите точное имя текстового файла с учётом регистра, без указания расширения файла(также убедитесь чтобы файл находился в папке программы): ";
-        string filename = "";
-        cin >> filename;
-        filename += ".txt";
-        fileIn.open(filename);
-        if (fileIn.fail())
-        {
-            cout << "Файл не открылся, проверьте на правильность написания названия или на наличие его в папке программы!\a";
-            system("pause");
-            system("cls");
-        }
-        else
-        {
-            break;
-        }
-    }
+    
    
     cout << "Введите имя автора: ";
     getline(cin, obj[countOfAllSongs - 1].songwriter_sName);
@@ -223,7 +205,7 @@ void InputTextFromFile(Songs* obj)
         obj[countOfAllSongs - 1].lyricOfSong += line;
     }
     obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs].lyricOfSong.length() - 1] = '\0';
-    fileIn.close();
+
     cout << "Готово!\n";
     system("pause");
     system("cls");

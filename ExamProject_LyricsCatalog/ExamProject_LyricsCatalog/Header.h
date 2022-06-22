@@ -1,7 +1,10 @@
 #pragma once
 #ifndef LYRICS
+#include <fstream>
 #include <string>
 using std::string;
+using std::ofstream;
+using std::ifstream;
 
 int countOfAllSongs = 1;
 
@@ -21,7 +24,7 @@ int MainMenu();
 int InputTextMenu();
 void ShowListOfSongs(const Songs* obj);
 void InputTextFromKeyboard(Songs* obj);
-void InputTextFromFile(Songs* obj);
+void InputTextFromFile(Songs* obj, ifstream& fileIn);
 Songs* AddSong(Songs* obj);
 //int ShowListOfAuthors(const Songwriter* obj, int countOfAuthor);
 

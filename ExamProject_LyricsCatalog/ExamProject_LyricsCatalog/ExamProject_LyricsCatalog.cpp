@@ -76,24 +76,44 @@ int main()
         }
         else if (option == 2)
         {
-            if (countOfAllSongs == 1)
-            {
-                int option = InputTextMenu();
-                if (option == 1)
-                {
-                    InputTextFromKeyboard(songs);
-                    break;
-                }
-                else if (option == 2)
-                {
 
-                    InputTextFromFile(songs);
-                }
-                else
-                {
-                    break;
-                }
+            int option = InputTextMenu();
+            if (option == 1)
+            {
+                InputTextFromKeyboard(songs);
             }
+            else if (option == 2)
+            {
+                ifstream fileIn;
+                while (true)
+                {
+                    cout << "Введите точное имя текстового файла с учётом регистра, без указания расширения файла(также убедитесь чтобы файл находился в папке программы): ";
+                    string filename = "";
+                    cin >> filename;
+                    filename += ".txt";
+                    fileIn.open(filename);
+                    if (fileIn.fail())
+                    {
+                        cout << "Файл не открылся, проверьте на правильность написания названия или на наличие его в папке программы!\a";
+                        system("pause");
+                        system("cls");
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                InputTextFromFile(songs, fileIn);
+
+
+                fileIn.close();
+            }
+            else
+            {
+                break;
+            }
+
 
 
         }
