@@ -63,7 +63,7 @@ int MainMenu()
     cout << "\t\t\t   ----------------------------------------------------------\n";
     cout << "\t\t\t   |               ÂÛÁÅÐÈÒÅ ÍÓÆÍÛÉ ÏÓÍÊÒ ÌÅÍÞ:              |\n";
     cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t                                 ";
+    cout << "\t\t\t                                ";
     int option = CheckForCorrect(9);
     system("cls");
     return option;
@@ -114,7 +114,7 @@ void ShowListOfSongs(const Songs* obj, int countOfAllSongs)
     cout << "\t\t\t                                ";
 }
 
-void InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
+Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
 {
     countOfAllSongs++;
     obj = AddSong(obj, countOfAllSongs);
@@ -135,7 +135,7 @@ void InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
             cin.ignore();
             for (size_t i = 0; i < obj[countOfAllSongs - 1].yearOfRelease.length(); i++)
             {
-                if (obj[countOfAllSongs - 1].yearOfRelease[i] < 48 && obj[countOfAllSongs - 1].yearOfRelease[i] > 57)
+                if ((char)obj[countOfAllSongs - 1].yearOfRelease[i] < 48 && (char)obj[countOfAllSongs - 1].yearOfRelease[i] > 57)
                 {
                     tmp = false;
                     break;
@@ -186,6 +186,7 @@ void InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
             break;
         }
     }
+    return obj;
 }
 
 void InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)

@@ -79,7 +79,7 @@ int main()
             int option = InputTextMenu();
             if (option == 1)
             {
-                InputTextFromKeyboard(songs, countOfAllSongs);
+                songs = InputTextFromKeyboard(songs, countOfAllSongs);
             }
             else if (option == 2)
             {
