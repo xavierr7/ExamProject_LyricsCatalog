@@ -10,8 +10,6 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-
-
 int main()
 {
     SetConsoleCP(1251);
@@ -63,7 +61,6 @@ int main()
                         int tmpCountOfSongs = 1;
                         for (size_t i = 0; i < countOfAllSongs; i++)
                         {
-
                             if (tmpCountOfSongs == option)
                             {
                                 cout << songs[i].lyricOfSong;
@@ -76,11 +73,9 @@ int main()
                     system("cls");
                 }
             }
-
         }
         else if (option == 2)
         {
-
             int option = InputTextMenu();
             if (option == 1)
             {
@@ -94,6 +89,7 @@ int main()
                     cout << "Введите точное имя текстового файла с учётом регистра, без указания расширения файла(также убедитесь чтобы файл находился в папке программы): ";
                     string filename = "";
                     cin >> filename;
+                    cin.ignore();
                     filename += ".txt";
                     fileIn.open(filename);
                     if (fileIn.fail())
@@ -104,21 +100,17 @@ int main()
                     }
                     else
                     {
+                        system("cls");
                         break;
                     }
                 }
                 InputTextFromFile(songs, fileIn, countOfAllSongs);
-
-
                 fileIn.close();
             }
             else
             {
                 break;
             }
-
-
-
         }
         else if (option == 3)
         {

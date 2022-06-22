@@ -152,9 +152,6 @@ void InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
                 system("cls");
             }
         }
-
-        cin.ignore();
-        system("cls");
     }
     else
     {
