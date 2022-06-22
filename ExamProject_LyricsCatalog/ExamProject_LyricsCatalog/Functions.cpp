@@ -128,30 +128,8 @@ Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
     {
         cout << "¬ведите его: \n";
         obj[countOfAllSongs - 1].yearIsKnown = true;
-        while (true)
-        {
-            bool tmp = true;
-            cin >> obj[countOfAllSongs - 1].yearOfRelease;
-            cin.ignore();
-            for (size_t i = 0; i < obj[countOfAllSongs - 1].yearOfRelease.length(); i++)
-            {
-                if ((char)obj[countOfAllSongs - 1].yearOfRelease[i] < 48 && (char)obj[countOfAllSongs - 1].yearOfRelease[i] > 57)
-                {
-                    tmp = false;
-                    break;
-                }
-            }
-            if (tmp)
-            {
-                break;
-            }
-            else
-            {
-                cout << "¬ведите только цифры!";
-                system("pause");
-                system("cls");
-            }
-        }
+        cin >> obj[countOfAllSongs - 1].yearOfRelease;
+        cin.ignore();
     }
     else
     {
