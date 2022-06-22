@@ -5,17 +5,17 @@ using std::string;
 
 struct Song
 {
-
+	char songwriter_sName[50];
 	char nameOfSong[50];
 	char lyricOfSong[10000];
-	bool yearIsKnown{};
-	int yearOfRelease{};
+	bool yearIsKnown;
+	int yearOfRelease;
 };
 
 struct Songwriter
 {
 	int n;
-	string songwriter_sName;
+	
 	Song* songs;
 };
 
