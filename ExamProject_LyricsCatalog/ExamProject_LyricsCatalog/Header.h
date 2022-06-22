@@ -19,7 +19,9 @@ struct Songs
 
 int CheckForCorrect(int endOfRange);
 int MainMenu();
+void InputText(Songs* obj, int countOfAllSongs);
 int InputTextMenu();
+int ChangeTextMenu();
 int ShowListOfSongs(const Songs* obj, int countOfAllSongs);
 Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs);
 Songs* InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs);

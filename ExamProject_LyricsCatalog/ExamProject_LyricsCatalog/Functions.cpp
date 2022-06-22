@@ -88,6 +88,23 @@ int InputTextMenu()
     return option;
 }
 
+int ChangeTextMenu()
+{
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No1|                ÈÇÌÅÍÈÒÜ ÂÅÑÜ ÒÅÊÑÒ                 |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No2|     ÄÎÁÀÂÈÒÜ Â ÊÎÍÅÖ ÒÅÊÑÒÀ ÍÅÄÎÑÒÀÞÙÈÅ ÑÒÐÎÊÈ     |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No3|                     ÂÛÕÎÄ                          |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "                                ";
+    int option = CheckForCorrect(4);
+    system("cls");
+    return option;
+}
+
 int ShowListOfSongs(const Songs* obj, int countOfAllSongs)
 {
     cout << "   --------------------------------------------------------------\n";
@@ -107,18 +124,13 @@ int ShowListOfSongs(const Songs* obj, int countOfAllSongs)
         }
         ++tmpCount;
     }
-    cout << "     " << tmpCount << " | Âûéòè â ãëàâíîå ìåíþ\n";
-    cout << "   --------------------------------------------------------------\n";
-    cout << "   |     ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÏÅÑÍÈ, ÒÅÊÑÒ ÊÎÒÎÐÎÉ ÕÎÒÈÒÅ ÏÎÑÌÎÒÐÅÒÜ   |\n";
-    cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
-    cout << "   --------------------------------------------------------------\n";
-    cout << "                                ";
     return tmpCount;
 }
 
-void InputText(Songs* obj, int countOfAllSongs)
+void InputText(Songs* obj, int song)
 {
     int countOfStrings = 1;
+    system("cls");
     cout << "Íàæìèòå \"Enter\" è íà÷èíàéòå ââîä ñòðî÷êè\n";
     for (size_t i = 0; i < countOfStrings; i++)
     {
@@ -130,15 +142,15 @@ void InputText(Songs* obj, int countOfAllSongs)
         system("cls");
         if (tmpOption == 1)
         {
-            obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
+            obj[song - 1].lyricOfSong += line + "\n";
 
-            cout << obj[countOfAllSongs - 1].lyricOfSong;
+            cout << obj[song - 1].lyricOfSong;
 
             ++countOfStrings;
         }
         else
         {
-            obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
+            obj[song - 1].lyricOfSong += line + "\n";
             cout << "Ãîòîâî!\n";
             system("pause");
             system("cls");

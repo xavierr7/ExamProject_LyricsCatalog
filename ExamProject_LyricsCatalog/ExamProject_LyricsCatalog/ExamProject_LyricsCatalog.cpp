@@ -49,6 +49,12 @@ int main()
                 while (true)
                 {
                     int tmpCount = ShowListOfSongs(songs, countOfAllSongs);
+                    cout << "     " << tmpCount << " | Âûéòè â ãëàâíîå ìåíþ\n";
+                    cout << "   --------------------------------------------------------------\n";
+                    cout << "   |     ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÏÅÑÍÈ, ÒÅÊÑÒ ÊÎÒÎÐÎÉ ÕÎÒÈÒÅ ÏÎÑÌÎÒÐÅÒÜ   |\n";
+                    cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
+                    cout << "   --------------------------------------------------------------\n";
+                    cout << "                                ";
                     int option = CheckForCorrect(tmpCount + 1);
                     system("cls");
 
@@ -114,7 +120,69 @@ int main()
         }
         else if (option == 3)
         {
+            while (true)
+            {
+                int tmpCount = ShowListOfSongs(songs, countOfAllSongs);
+                cout << "     " << tmpCount << " | Âûéòè â ãëàâíîå ìåíþ\n";
+                cout << "   --------------------------------------------------------------\n";
+                cout << "   |     ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÏÅÑÍÈ, ÒÅÊÑÒ ÊÎÒÎÐÎÉ ÕÎÒÈÒÅ ÓÄÀËÈÒÜ      |\n";
+                cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
+                cout << "   --------------------------------------------------------------\n";
+                cout << "                                ";
+                int option = CheckForCorrect(tmpCount + 1);
+                system("cls");
 
+                if (option == tmpCount)
+                {
+                    break;
+                }
+                else
+                {
+                    songs[tmpCount - 1].lyricOfSong = "";
+                }
+                system("pause");
+                system("cls");
+            }
+
+        }
+        else if (option == 4)
+        {
+            while (true)
+            {
+                int tmpCount = ShowListOfSongs(songs, countOfAllSongs);
+                cout << "     " << tmpCount << " | Âûéòè â ãëàâíîå ìåíþ\n";
+                cout << "   --------------------------------------------------------------\n";
+                cout << "   |     ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÏÅÑÍÈ, ÒÅÊÑÒ ÊÎÒÎÐÎÉ ÕÎÒÈÒÅ ÈÇÌÅÍÈÒÜ     |\n";
+                cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
+                cout << "   --------------------------------------------------------------\n";
+                cout << "                                ";
+                int option = CheckForCorrect(tmpCount + 1);
+                system("cls");
+
+                if (option == tmpCount)
+                {
+                    break;
+                }
+                else
+                {
+                    int option = ChangeTextMenu();
+                    if (option ==1)
+                    {
+                        songs[tmpCount - 1].lyricOfSong = "";
+                        input
+                    }
+                    else if (option == 2)
+                    {
+
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                system("pause");
+                system("cls");
+            }
         }
 
     }
