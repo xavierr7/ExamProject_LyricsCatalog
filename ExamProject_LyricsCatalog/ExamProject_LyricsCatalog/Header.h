@@ -16,6 +16,17 @@ struct Songs
 	string yearOfRelease;
 };
 
+struct SongsChar
+{
+	char songwriter_sName[100];
+	char nameOfSong[200];
+	char lyricOfSong[12000];
+	bool yearIsKnown;
+	bool wordIsHere = false;
+	char yearOfRelease[10];
+};
+
+
 
 int CheckForCorrect(int endOfRange);
 int MainMenu();

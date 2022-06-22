@@ -166,14 +166,15 @@ int main()
                 else
                 {
                     int option = ChangeTextMenu();
-                    if (option ==1)
+                    if (option == 1)
                     {
                         songs[tmpCount - 1].lyricOfSong = "";
-                        input
+                        InputText(songs, option);
                     }
                     else if (option == 2)
                     {
-
+                        songs[option - 1].lyricOfSong += "\n";
+                        InputText(songs, option);
                     }
                     else
                     {
@@ -184,10 +185,86 @@ int main()
                 system("cls");
             }
         }
+        else if (option == 5)
+        {
+            SongsChar* songsChar = new SongsChar[countOfAllSongs];
+            for (size_t i = 0; i < countOfAllSongs; i++)
+            {
+                strcpy_s(songsChar[i].lyricOfSong, songs[i].lyricOfSong.c_str());
+                strcpy_s(songsChar[i].nameOfSong, songs[i].nameOfSong.c_str());
+                strcpy_s(songsChar[i].songwriter_sName, songs[i].songwriter_sName.c_str());
+                strcpy_s(songsChar[i].yearOfRelease, songs[i].yearOfRelease.c_str());
+                songsChar[i].wordIsHere = songs[i].wordIsHere;
+                songs[i].yearIsKnown = songs[i].yearIsKnown;
+            }
+
+            ofstream fileOut;
+            string filename = "CurrentListOfSongs.txt";
+            fileOut.open(filename);
+            for (size_t i = 0; i < countOfAllSongs; i++)
+            {
+                fileOut.write((char*)&songsChar[i], sizeof(SongsChar));
+            }
+            fileOut.close();
+
+            string filename2 = "countOfStructures.txt";
+            fileOut.open(filename2);
+
+            fileOut << std::to_string(countOfAllSongs);
+
+            fileOut.close();
+
+            delete[] songsChar;
+        }
+        else if (option == 6)
+        {
+            string filename = "countOfStructures.txt";
+            string filename2 = "CurrentListOfSongs.txt";
+            ifstream fileIn;
+            fileIn.open(filename);
+            if (fileIn.fail())
+            {
+                cout << "Error opening file!\a";
+                return 404;
+            }
+            int countOfSavedSongs;
+            fileIn >> countOfSavedSongs;
+            fileIn.close();
+
+            songs = AddSong(songs, countOfSavedSongs);
+
+            fileIn.open(filename);
+            if (fileIn.fail())
+            {
+                cout << "Error opening file!\a";
+                return 404;
+            }
+
+            SongsChar* songsChar = new SongsChar[countOfSavedSongs];
+
+            for (size_t i = 0; i < countOfSavedSongs; i++)
+            {
+                fileIn.read((char*)&songsChar, sizeof(SongsChar));
+            }
+            
+            fileIn.close();
+
+            for (size_t i = 0; i < countOfAllSongs; i++)
+            {
+                songs[i].lyricOfSong = songsChar[i].lyricOfSong;
+                songs[i].nameOfSong = songsChar[i].nameOfSong;
+                songs[i].songwriter_sName = songsChar[i].songwriter_sName;
+                songs[i].wordIsHere = songsChar[i].wordIsHere;
+                songs[i].yearIsKnown = songsChar[i].yearIsKnown;
+                songs[i].yearOfRelease = songsChar[i].yearOfRelease;
+            }
+
+        }
 
     }
 
     delete[] songs;
+
     return 0;
     system("pause");
 }
