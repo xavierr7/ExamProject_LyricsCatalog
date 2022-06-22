@@ -10,6 +10,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+
+
 int main()
 {
     SetConsoleCP(1251);
@@ -26,6 +28,8 @@ int main()
     ofstream fileOut;
     fileOut.open(filename);
     fileOut.close();*/
+
+    int countOfAllSongs = 1;
 
     Songs* songs = new Songs[countOfAllSongs];
     --countOfAllSongs;
@@ -46,7 +50,7 @@ int main()
             {
                 while (true)
                 {
-                    ShowListOfSongs(songs);
+                    ShowListOfSongs(songs, countOfAllSongs);
                     int option = CheckForCorrect(countOfAllSongs + 1);
                     system("cls");
 
@@ -80,7 +84,7 @@ int main()
             int option = InputTextMenu();
             if (option == 1)
             {
-                InputTextFromKeyboard(songs);
+                InputTextFromKeyboard(songs, countOfAllSongs);
             }
             else if (option == 2)
             {
@@ -103,8 +107,7 @@ int main()
                         break;
                     }
                 }
-
-                InputTextFromFile(songs, fileIn);
+                InputTextFromFile(songs, fileIn, countOfAllSongs);
 
 
                 fileIn.close();

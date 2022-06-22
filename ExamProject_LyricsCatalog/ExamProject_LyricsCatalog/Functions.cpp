@@ -89,7 +89,7 @@ int InputTextMenu()
     return option;
 }
 
-void ShowListOfSongs(const Songs* obj)
+void ShowListOfSongs(const Songs* obj, int countOfAllSongs)
 {
     cout << "\t\t\t   --------------------------------------------------------------\n";
     cout << "\t\t\t   |                       СПИСОК ВСЕХ ПЕСЕН                    |\n";
@@ -114,10 +114,10 @@ void ShowListOfSongs(const Songs* obj)
     cout << "\t\t\t                                ";
 }
 
-void InputTextFromKeyboard(Songs* obj)
+void InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
 {
     countOfAllSongs++;
-    obj = AddSong(obj);
+    obj = AddSong(obj, countOfAllSongs);
     cout << "Введите имя автора: ";
     getline(cin, obj[countOfAllSongs - 1].songwriter_sName);
     cout << "Введите название песни: ";
@@ -128,7 +128,31 @@ void InputTextFromKeyboard(Songs* obj)
     {
         cout << "Введите его: \n";
         obj[countOfAllSongs - 1].yearIsKnown = true;
-        cin >> obj[countOfAllSongs - 1].yearOfRelease;
+        while (true)
+        {
+            bool tmp = true;
+            cin >> obj[countOfAllSongs - 1].yearOfRelease;
+            cin.ignore();
+            for (size_t i = 0; i < obj[countOfAllSongs - 1].yearOfRelease.length(); i++)
+            {
+                if (obj[countOfAllSongs - 1].yearOfRelease[i] < 48 && obj[countOfAllSongs - 1].yearOfRelease[i] > 57)
+                {
+                    tmp = false;
+                    break;
+                }
+            }
+            if (tmp)
+            {
+                break;
+            }
+            else
+            {
+                cout << "Введите только цифры!";
+                system("pause");
+                system("cls");
+            }
+        }
+
         cin.ignore();
         system("cls");
     }
@@ -167,42 +191,59 @@ void InputTextFromKeyboard(Songs* obj)
     }
 }
 
-void InputTextFromFile(Songs* obj, ifstream& fileIn)
+void InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
 {
     countOfAllSongs++;
-    obj = AddSong(obj);
+    obj = AddSong(obj, countOfAllSongs);
     
-    
-   
-    cout << "Введите имя автора: ";
-    getline(cin, obj[countOfAllSongs - 1].songwriter_sName);
-    cout << "Введите название песни: ";
-    getline(cin, obj[countOfAllSongs - 1].nameOfSong);
-    cout << "\n Известен ли вам год выпуска этой песни?\n1.) Да\n2.) Нет\n";
-    int tmpOption3 = CheckForCorrect(3);
-    if (tmpOption3 == 1)
-    {
-        obj[countOfAllSongs - 1].yearIsKnown = true;
-        cin >> obj[countOfAllSongs - 1].yearOfRelease;
-        cin.ignore();
-        system("cls");
-    }
-    else
-    {
-        obj[countOfAllSongs - 1].yearIsKnown = false;
-        system("cls");
-    }
-
+    int tmp = 1;
     while (!fileIn.eof())
     {
+        if (tmp == 1)
+        {
+            string line;
+            getline(fileIn, line);
+            obj[countOfAllSongs - 1].songwriter_sName += line;
+            ++tmp;
+        }
+        else if(tmp == 2)
+        {
+            string line;
+            getline(fileIn, line);
+            obj[countOfAllSongs - 1].nameOfSong += line;
+            ++tmp;
+        }
+        else if (tmp == 3)
+        {
+            string line;
+            getline(fileIn, line);
+            if (line == "")
+            {
+                obj[countOfAllSongs - 1].yearIsKnown = false;
+                continue;
+            }
+            else
+            {
+                obj[countOfAllSongs - 1].yearIsKnown = true;
+                obj[countOfAllSongs - 1].yearOfRelease = line;
+            }
+            ++tmp;
+        }
         string line;
         getline(fileIn, line);
+        if (line == "~~~~~~~~~~")
+        {
+            tmp = 1;
+            obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs].lyricOfSong.length() - 1] = '\0';
+            ++countOfAllSongs;
+            obj = AddSong(obj, countOfAllSongs);
+        }
         if (line == "")
         {
             obj[countOfAllSongs - 1].lyricOfSong += "\n";
+            continue;
         }
-        line += "\n";
-        obj[countOfAllSongs - 1].lyricOfSong += line;
+        obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
     }
     obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs].lyricOfSong.length() - 1] = '\0';
 
@@ -211,7 +252,7 @@ void InputTextFromFile(Songs* obj, ifstream& fileIn)
     system("cls");
 }
 
-Songs* AddSong(Songs* obj)
+Songs* AddSong(Songs* obj, int countOfAllSongs)
 {
     Songs* tempObj = new Songs[countOfAllSongs];
     for (size_t i = 0; i < countOfAllSongs - 1; i++)

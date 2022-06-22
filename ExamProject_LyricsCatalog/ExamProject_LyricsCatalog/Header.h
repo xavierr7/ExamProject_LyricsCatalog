@@ -6,8 +6,6 @@ using std::string;
 using std::ofstream;
 using std::ifstream;
 
-int countOfAllSongs = 1;
-
 struct Songs
 {
 	string songwriter_sName;
@@ -15,17 +13,17 @@ struct Songs
 	string lyricOfSong;
 	bool yearIsKnown;
 	bool wordIsHere = false;
-	int yearOfRelease;
+	string yearOfRelease;
 };
 
 
 int CheckForCorrect(int endOfRange);
 int MainMenu();
 int InputTextMenu();
-void ShowListOfSongs(const Songs* obj);
-void InputTextFromKeyboard(Songs* obj);
-void InputTextFromFile(Songs* obj, ifstream& fileIn);
-Songs* AddSong(Songs* obj);
+void ShowListOfSongs(const Songs* obj, int countOfAllSongs);
+void InputTextFromKeyboard(Songs* obj, int& countOfAllSongs);
+void InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs);
+Songs* AddSong(Songs* obj, int countOfAllSongs);
 //int ShowListOfAuthors(const Songwriter* obj, int countOfAuthor);
 
 
