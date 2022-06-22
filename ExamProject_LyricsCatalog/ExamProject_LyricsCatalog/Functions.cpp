@@ -33,37 +33,36 @@ int CheckForCorrect(int endOfRange)
 int MainMenu()
 {
     system("cls");
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |                         ÌÅÍÞ                           |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No1|            ÂÛÂÅÑÒÈ ÑÏÈÑÎÊ ÂÑÅÕ ÏÅÑÅÍ               |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No2|         ÄÎÁÀÂÈÒÜ ÍÎÂÓÞ ÏÅÑÍÞ È Å¨ ÒÅÊÑÒ            |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No3|           ÓÄÀËÈÒÜ ÒÅÊÑÒ ÎÄÍÎÉ ÈÇ ÏÅÑÅÍ             |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No4|          ÈÇÌÅÍÅÍÈÅ ÒÅÊÑÒÀ ÎÄÍÎÉ ÈÇ ÏÅÑÅÍ           |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No5|          ÑÎÕÐÀÍÅÍÈÅ ÒÅÊÑÒÀ ÏÅÑÍÈ Â ÔÀÉË            |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No6|   ÏÎÈÑÊ È ÎÒÎÁÐÀÆÅÍÈÅ ÂÑÅÕ ÏÅÑÅÍ ÎÄÍÎÃÎ ÀÂÒÎÐÀ     |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No7|               ÏÎÈÑÊ ÏÅÑÅÍ ÏÎ ÑËÎÂÓ                 |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No8|                     ÂÛÕÎÄ                          |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |               ÂÛÁÅÐÈÒÅ ÍÓÆÍÛÉ ÏÓÍÊÒ ÌÅÍÞ:              |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t                                ";
+    cout << "   |                         ÌÅÍÞ                           |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No1|            ÂÛÂÅÑÒÈ ÑÏÈÑÎÊ ÂÑÅÕ ÏÅÑÅÍ               |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No2|         ÄÎÁÀÂÈÒÜ ÍÎÂÓÞ ÏÅÑÍÞ È Å¨ ÒÅÊÑÒ            |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No3|           ÓÄÀËÈÒÜ ÒÅÊÑÒ ÎÄÍÎÉ ÈÇ ÏÅÑÅÍ             |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No4|          ÈÇÌÅÍÅÍÈÅ ÒÅÊÑÒÀ ÎÄÍÎÉ ÈÇ ÏÅÑÅÍ           |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No5|          ÑÎÕÐÀÍÅÍÈÅ ÒÅÊÑÒÀ ÏÅÑÍÈ Â ÔÀÉË            |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No6|   ÏÎÈÑÊ È ÎÒÎÁÐÀÆÅÍÈÅ ÂÑÅÕ ÏÅÑÅÍ ÎÄÍÎÃÎ ÀÂÒÎÐÀ     |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No7|               ÏÎÈÑÊ ÏÅÑÅÍ ÏÎ ÑËÎÂÓ                 |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No8|                     ÂÛÕÎÄ                          |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |               ÂÛÁÅÐÈÒÅ ÍÓÆÍÛÉ ÏÓÍÊÒ ÌÅÍÞ:              |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "                                ";
     int option = CheckForCorrect(9);
     system("cls");
     return option;
@@ -71,32 +70,33 @@ int MainMenu()
 
 int InputTextMenu()
 {
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |                           ÌÅÍÞ                         |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No1|             ÂÂÎÄ ÒÅÊÑÒÀ Ñ ÊËÀÂÈÀÒÓÐÛ               |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No2|             ÇÀÃÐÓÇÈÒÜ ÒÅÊÑÒ ÈÇ ÔÀÉËÀ               |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t   |No3|                     ÂÛÕÎÄ                          |\n";
-    cout << "\t\t\t   ----------------------------------------------------------\n";
-    cout << "\t\t\t                                ";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |                           ÌÅÍÞ                         |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No1|             ÂÂÎÄ ÒÅÊÑÒÀ Ñ ÊËÀÂÈÀÒÓÐÛ               |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No2|             ÇÀÃÐÓÇÈÒÜ ÒÅÊÑÒ ÈÇ ÔÀÉËÀ               |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "   |No3|                     ÂÛÕÎÄ                          |\n";
+    cout << "   ----------------------------------------------------------\n";
+    cout << "                                ";
     int option = CheckForCorrect(4);
     system("cls");
     return option;
 }
 
-void ShowListOfSongs(const Songs* obj, int countOfAllSongs)
+int ShowListOfSongs(const Songs* obj, int countOfAllSongs)
 {
-    cout << "\t\t\t   --------------------------------------------------------------\n";
-    cout << "\t\t\t   |                       ÑÏÈÑÎÊ ÂÑÅÕ ÏÅÑÅÍ                    |\n";
-    cout << "\t\t\t   --------------------------------------------------------------\n";
+    cout << "   --------------------------------------------------------------\n";
+    cout << "   |                       ÑÏÈÑÎÊ ÂÑÅÕ ÏÅÑÅÍ                    |\n";
+    cout << "   --------------------------------------------------------------\n";
+    int tmpCount = 1;
     for (size_t i = 0; i < countOfAllSongs; i++)
     {
-        cout << "\t\t\t     " << countOfAllSongs << " | " << "\"" << obj[i].nameOfSong << "\" ~ " << obj[i].songwriter_sName;
+        cout << "\t\t\t     " << tmpCount << " | " << "\"" << obj[i].nameOfSong << "\" ~ " << obj[i].songwriter_sName;
         if (obj[i].yearIsKnown)
         {
             cout << " ~ " << obj[i].yearOfRelease << endl;
@@ -105,40 +105,21 @@ void ShowListOfSongs(const Songs* obj, int countOfAllSongs)
         {
             cout << endl;
         }
+        ++tmpCount;
     }
-    cout << "\t\t\t   | " << countOfAllSongs << " | Âûéòè â ãëàâíîå ìåíþ\n";
-    cout << "\t\t\t   --------------------------------------------------------------\n";
-    cout << "\t\t\t   |     ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÏÅÑÍÈ, ÒÅÊÑÒ ÊÎÒÎÐÎÉ ÕÎÒÈÒÅ ÏÎÑÌÎÒÐÅÒÜ   |\n";
-    cout << "\t\t\t   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
-    cout << "\t\t\t   --------------------------------------------------------------\n";
-    cout << "\t\t\t                                ";
+    cout << "     " << tmpCount << " | Âûéòè â ãëàâíîå ìåíþ\n";
+    cout << "   --------------------------------------------------------------\n";
+    cout << "   |     ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÏÅÑÍÈ, ÒÅÊÑÒ ÊÎÒÎÐÎÉ ÕÎÒÈÒÅ ÏÎÑÌÎÒÐÅÒÜ   |\n";
+    cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
+    cout << "   --------------------------------------------------------------\n";
+    cout << "                                ";
+    return tmpCount;
 }
 
-Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
+void InputText(Songs* obj, int countOfAllSongs)
 {
-    countOfAllSongs++;
-    obj = AddSong(obj, countOfAllSongs);
-    cout << "Ââåäèòå èìÿ àâòîðà: ";
-    getline(cin, obj[countOfAllSongs - 1].songwriter_sName);
-    cout << "Ââåäèòå íàçâàíèå ïåñíè: ";
-    getline(cin, obj[countOfAllSongs - 1].nameOfSong);
-    cout << "\n Èçâåñòåí ëè âàì ãîä âûïóñêà ýòîé ïåñíè?\n1.) Äà\n2.) Íåò\n";
-    int option = CheckForCorrect(3);
-    if (option == 1)
-    {
-        cout << "Ââåäèòå åãî: \n";
-        obj[countOfAllSongs - 1].yearIsKnown = true;
-        cin >> obj[countOfAllSongs - 1].yearOfRelease;
-        cin.ignore();
-    }
-    else
-    {
-        obj[countOfAllSongs - 1].yearIsKnown = false;
-        system("cls");
-    }
-
     int countOfStrings = 1;
-
+    cout << "Íàæìèòå \"Enter\" è íà÷èíàéòå ââîä ñòðî÷êè\n";
     for (size_t i = 0; i < countOfStrings; i++)
     {
         string line;
@@ -164,10 +145,38 @@ Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
             break;
         }
     }
+}
+
+Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
+{
+    countOfAllSongs++;
+    obj = AddSong(obj, countOfAllSongs);
+    cout << "Ââåäèòå èìÿ àâòîðà: ";
+    getline(cin, obj[countOfAllSongs - 1].songwriter_sName);
+    cout << "Ââåäèòå íàçâàíèå ïåñíè: ";
+    getline(cin, obj[countOfAllSongs - 1].nameOfSong);
+    cout << "\n Èçâåñòåí ëè âàì ãîä âûïóñêà ýòîé ïåñíè?\n1.) Äà\n2.) Íåò\n";
+    int option = CheckForCorrect(3);
+    if (option == 1)
+    {
+        cout << "Ââåäèòå åãî: \n";
+        obj[countOfAllSongs - 1].yearIsKnown = true;
+        cin >> obj[countOfAllSongs - 1].yearOfRelease;
+        cin.ignore();
+        system("cls");
+    }
+    else
+    {
+        obj[countOfAllSongs - 1].yearIsKnown = false;
+        system("cls");
+    }
+
+    InputText(obj, countOfAllSongs);
+
     return obj;
 }
 
-void InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
+Songs* InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
 {
     countOfAllSongs++;
     obj = AddSong(obj, countOfAllSongs);
@@ -180,28 +189,17 @@ void InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
             string line;
             getline(fileIn, line);
             obj[countOfAllSongs - 1].songwriter_sName += line;
-            ++tmp;
-        }
-        else if(tmp == 2)
-        {
-            string line;
             getline(fileIn, line);
             obj[countOfAllSongs - 1].nameOfSong += line;
-            ++tmp;
-        }
-        else if (tmp == 3)
-        {
-            string line;
             getline(fileIn, line);
             if (line == "")
             {
                 obj[countOfAllSongs - 1].yearIsKnown = false;
-                continue;
             }
             else
             {
                 obj[countOfAllSongs - 1].yearIsKnown = true;
-                obj[countOfAllSongs - 1].yearOfRelease = line;
+                obj[countOfAllSongs - 1].yearOfRelease += line;
             }
             ++tmp;
         }
@@ -210,22 +208,26 @@ void InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
         if (line == "~~~~~~~~~~")
         {
             tmp = 1;
-            obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs].lyricOfSong.length() - 1] = '\0';
+            obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs - 1].lyricOfSong.length() - 1] = '\0';
             ++countOfAllSongs;
             obj = AddSong(obj, countOfAllSongs);
         }
-        if (line == "")
+        else
         {
-            obj[countOfAllSongs - 1].lyricOfSong += "\n";
-            continue;
+            if (line == "")
+            {
+                obj[countOfAllSongs - 1].lyricOfSong += "\n";
+                continue;
+            }
+            obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
         }
-        obj[countOfAllSongs - 1].lyricOfSong += line + "\n";
     }
-    obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs].lyricOfSong.length() - 1] = '\0';
+    obj[countOfAllSongs - 1].lyricOfSong[obj[countOfAllSongs-1].lyricOfSong.length() - 1] = '\0';
 
     cout << "Ãîòîâî!\n";
     system("pause");
     system("cls");
+    return obj;
 }
 
 Songs* AddSong(Songs* obj, int countOfAllSongs)

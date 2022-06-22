@@ -48,11 +48,11 @@ int main()
             {
                 while (true)
                 {
-                    ShowListOfSongs(songs, countOfAllSongs);
-                    int option = CheckForCorrect(countOfAllSongs + 1);
+                    int tmpCount = ShowListOfSongs(songs, countOfAllSongs);
+                    int option = CheckForCorrect(tmpCount + 1);
                     system("cls");
 
-                    if (option == countOfAllSongs)
+                    if (option == tmpCount)
                     {
                         break;
                     }
@@ -104,7 +104,7 @@ int main()
                         break;
                     }
                 }
-                InputTextFromFile(songs, fileIn, countOfAllSongs);
+                songs = InputTextFromFile(songs, fileIn, countOfAllSongs);
                 fileIn.close();
             }
             else
