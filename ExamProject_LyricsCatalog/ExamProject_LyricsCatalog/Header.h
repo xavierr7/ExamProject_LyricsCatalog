@@ -13,6 +13,7 @@ struct Songs
 	string lyricOfSong;
 	bool yearIsKnown;
 	bool wordIsHere = false;
+
 	string yearOfRelease;
 };
 
@@ -33,11 +34,12 @@ int MainMenu();
 void InputText(Songs* obj, int countOfAllSongs);
 int InputTextMenu();
 int ChangeTextMenu();
+int ShowListOfAuthors(Songs* obj, int count);
 int ShowListOfSongs(const Songs* obj, int countOfAllSongs);
 Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs);
 Songs* InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs);
 Songs* AddSong(Songs* obj, int countOfAllSongs);
-//int ShowListOfAuthors(const Songwriter* obj, int countOfAuthor);
+
 
 
 #endif // !LYRICS

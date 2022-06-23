@@ -131,6 +131,8 @@
     <ClCompile Include="Functions.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="countOfStructures.txt" />
+    <Text Include="CurrentListOfSongs.txt" />
     <Text Include="Lyrics.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,8 @@
     <Text Include="Lyrics.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="countOfStructures.txt" />
+    <Text Include="CurrentListOfSongs.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h">

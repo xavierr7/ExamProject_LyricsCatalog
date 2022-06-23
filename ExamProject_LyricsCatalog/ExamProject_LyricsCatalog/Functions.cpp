@@ -32,7 +32,7 @@ int CheckForCorrect(int endOfRange)
 
 int MainMenu()
 {
-    system("cls");
+    //system("cls");
     cout << "   |                         ÌÅÍÞ                           |\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   ----------------------------------------------------------\n";
@@ -51,16 +51,13 @@ int MainMenu()
     cout << "   |No5|          ÑÎÕÐÀÍÅÍÈÅ ÊÀÒÀËÎÃÀ ÏÅÑÅÍ Â ÔÀÉË          |\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   ----------------------------------------------------------\n";
-    cout << "   |No6|         Ñ×ÈÒÛÂÀÍÈÅ ÊÀÒÀËÎÃÀ ÏÅÑÅÍ ÈÇ ÔÀÉËÀ         |\n";
+    cout << "   |No6|   ÏÎÈÑÊ È ÎÒÎÁÐÀÆÅÍÈÅ ÂÑÅÕ ÏÅÑÅÍ ÎÄÍÎÃÎ ÀÂÒÎÐÀ     |\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   ----------------------------------------------------------\n";
-    cout << "   |No7|   ÏÎÈÑÊ È ÎÒÎÁÐÀÆÅÍÈÅ ÂÑÅÕ ÏÅÑÅÍ ÎÄÍÎÃÎ ÀÂÒÎÐÀ     |\n";
+    cout << "   |No7|               ÏÎÈÑÊ ÏÅÑÅÍ ÏÎ ÑËÎÂÓ                 |\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   ----------------------------------------------------------\n";
-    cout << "   |No8|               ÏÎÈÑÊ ÏÅÑÅÍ ÏÎ ÑËÎÂÓ                 |\n";
-    cout << "   ----------------------------------------------------------\n";
-    cout << "   ----------------------------------------------------------\n";
-    cout << "   |No9|                     ÂÛÕÎÄ                          |\n";
+    cout << "   |No8|                     ÂÛÕÎÄ                          |\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   |               ÂÛÁÅÐÈÒÅ ÍÓÆÍÛÉ ÏÓÍÊÒ ÌÅÍÞ:              |\n";
@@ -116,7 +113,7 @@ int ShowListOfSongs(const Songs* obj, int countOfAllSongs)
     int tmpCount = 1;
     for (size_t i = 0; i < countOfAllSongs; i++)
     {
-        cout << "\t\t\t     " << tmpCount << " | " << "\"" << obj[i].nameOfSong << "\" ~ " << obj[i].songwriter_sName;
+        cout << "     " << tmpCount << " | " << "\"" << obj[i].nameOfSong << "\" ~ " << obj[i].songwriter_sName;
         if (obj[i].yearIsKnown)
         {
             cout << " ~ " << obj[i].yearOfRelease << endl;
@@ -135,6 +132,8 @@ void InputText(Songs* obj, int song)
     int countOfStrings = 1;
     system("cls");
     cout << "Íàæìèòå \"Enter\" è íà÷èíàéòå ââîä ñòðî÷êè\n";
+    system("pause");
+    system("cls");
     for (size_t i = 0; i < countOfStrings; i++)
     {
         string line;
@@ -256,28 +255,29 @@ Songs* AddSong(Songs* obj, int count)
         tempObj[i].wordIsHere = obj[i].wordIsHere;
         tempObj[i].yearIsKnown = obj[i].yearIsKnown;
         tempObj[i].yearOfRelease = obj[i].yearOfRelease;
+
     }
     delete[] obj;
     obj = tempObj;
     return obj;
 }
 
-//int ShowListOfAuthors(const Songwriter* obj, int countOfAuthor)
-//{
-//    cout << "\t\t\t   --------------------------------------------------------------\n";
-//    cout << "\t\t\t   |                     ÑÏÈÑÎÊ ÂÑÅÕ ÀÂÒÎÐÎÂ                    |\n";
-//    cout << "\t\t\t   --------------------------------------------------------------\n";
-//    int tmpCountOfAuthors = 1;
-//    for (size_t i = 0; i < countOfAuthor; i++)
-//    {
-//        cout << "\t\t\t   | " << tmpCountOfAuthors << " | " <<  obj[i].songwriter_sName << endl;
-//        for (size_t j = 0; j < obj[i].n; j++)
-//        {
-//            cout << "\t\t\t      " << "-" << obj[i].songs[j].nameOfSong << endl;
-//        }
-//        ++tmpCountOfAuthors;
-//        cout << endl;
-//    }
-//    return tmpCountOfAuthors;
-//}
+
+int ShowListOfAuthors(Songs* obj, int count)
+{
+    cout << "   --------------------------------------------------------------\n";
+    cout << "   |                     ÑÏÈÑÎÊ ÂÑÅÕ ÀÂÒÎÐÎÂ                    |\n";
+    cout << "   --------------------------------------------------------------\n";
+    int tmpCountOfAuthors = 1;
+    string tmp;
+    bool flag = false;
+
+    for (size_t i = 0, k = 0; i < count; i++)
+    {
+        cout << "    " << tmpCountOfAuthors << " | " << obj[i].songwriter_sName << endl;
+        ++tmpCountOfAuthors;
+    }
+
+    return tmpCountOfAuthors;
+}
 

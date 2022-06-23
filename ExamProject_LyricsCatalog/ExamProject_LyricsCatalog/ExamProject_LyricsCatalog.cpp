@@ -129,16 +129,17 @@ int main()
                 cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
                 cout << "   --------------------------------------------------------------\n";
                 cout << "                                ";
-                int option = CheckForCorrect(tmpCount + 1);
+                int tmOption = CheckForCorrect(tmpCount + 1);
                 system("cls");
 
-                if (option == tmpCount)
+                if (tmOption == tmpCount)
                 {
                     break;
                 }
                 else
                 {
-                    songs[tmpCount - 1].lyricOfSong = "";
+                    songs[tmOption - 1].lyricOfSong = "";
+
                 }
                 system("pause");
                 system("cls");
@@ -156,25 +157,25 @@ int main()
                 cout << "   |     ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:   |\n";
                 cout << "   --------------------------------------------------------------\n";
                 cout << "                                ";
-                int option = CheckForCorrect(tmpCount + 1);
+                int tmpOption = CheckForCorrect(tmpCount + 1);
                 system("cls");
 
-                if (option == tmpCount)
+                if (tmpOption == tmpCount)
                 {
                     break;
                 }
                 else
                 {
-                    int option = ChangeTextMenu();
-                    if (option == 1)
+                    int tmpOption2 = ChangeTextMenu();
+                    if (tmpOption2 == 1)
                     {
-                        songs[tmpCount - 1].lyricOfSong = "";
-                        InputText(songs, option);
+                        songs[tmpOption - 1].lyricOfSong = "";
+                        InputText(songs, tmpOption);
                     }
-                    else if (option == 2)
+                    else if (tmpOption2 == 2)
                     {
-                        songs[option - 1].lyricOfSong += "\n";
-                        InputText(songs, option);
+                        songs[tmpOption - 1].lyricOfSong += "\n";
+                        InputText(songs, tmpOption);
                     }
                     else
                     {
@@ -195,7 +196,8 @@ int main()
                 strcpy_s(songsChar[i].songwriter_sName, songs[i].songwriter_sName.c_str());
                 strcpy_s(songsChar[i].yearOfRelease, songs[i].yearOfRelease.c_str());
                 songsChar[i].wordIsHere = songs[i].wordIsHere;
-                songs[i].yearIsKnown = songs[i].yearIsKnown;
+                songsChar[i].yearIsKnown = songs[i].yearIsKnown;
+
             }
 
             ofstream fileOut;
@@ -207,60 +209,47 @@ int main()
             }
             fileOut.close();
 
-            string filename2 = "countOfStructures.txt";
-            fileOut.open(filename2);
-
-            fileOut << std::to_string(countOfAllSongs);
-
-            fileOut.close();
-
             delete[] songsChar;
         }
         else if (option == 6)
         {
-            string filename = "countOfStructures.txt";
-            string filename2 = "CurrentListOfSongs.txt";
-            ifstream fileIn;
-            fileIn.open(filename);
-            if (fileIn.fail())
+            while (true)
             {
-                cout << "Error opening file!\a";
-                return 404;
-            }
-            int countOfSavedSongs;
-            fileIn >> countOfSavedSongs;
-            fileIn.close();
+                int tmpCount = ShowListOfAuthors(songs, countOfAllSongs);
+                cout << "     " << tmpCount << " | Âûéòè â ãëàâíîå ìåíþ\n";
+                cout << "   --------------------------------------------------------------\n";
+                cout << "   |   ÂÂÅÄÈÒÅ ÍÎÌÅÐ ÀÂÒÎÐÀ, ÏÅÑÍÈ ÊÎÒÎÐÎÃÎ ÕÎÒÈÒÅ ÏÎÑÌÎÒÐÅÒÜ   |\n";
+                cout << "   |    ÈËÈ ÑÎÎÒÂÅÒÑÒÂÓÞÙÈÉ ÏÓÍÊÒ ÄËß ÂÛÕÎÄÀ Â ÃËÀÂÍÎÅ ÌÅÍÞ:    |\n";
+                cout << "   --------------------------------------------------------------\n";
+                cout << "                                ";
+                int tmOption = CheckForCorrect(tmpCount + 1);
+                system("cls");
 
-            songs = AddSong(songs, countOfSavedSongs);
+                if (tmOption == tmpCount)
+                {
+                    break;
+                }
+                else
+                {
+                    cout << "|" << songs[tmOption - 1].songwriter_sName << endl;
+                    for (size_t i = 0; i < countOfAllSongs; i++)
+                    {
+                        if (songs[i].songwriter_sName == songs[tmOption - 1].songwriter_sName)
+                        {
+                            cout << "  -" << songs[i].nameOfSong << endl;;
+                        }
+                    }
 
-            fileIn.open(filename);
-            if (fileIn.fail())
-            {
-                cout << "Error opening file!\a";
-                return 404;
-            }
-
-            SongsChar* songsChar = new SongsChar[countOfSavedSongs];
-
-            for (size_t i = 0; i < countOfSavedSongs; i++)
-            {
-                fileIn.read((char*)&songsChar, sizeof(SongsChar));
-            }
-            
-            fileIn.close();
-
-            for (size_t i = 0; i < countOfAllSongs; i++)
-            {
-                songs[i].lyricOfSong = songsChar[i].lyricOfSong;
-                songs[i].nameOfSong = songsChar[i].nameOfSong;
-                songs[i].songwriter_sName = songsChar[i].songwriter_sName;
-                songs[i].wordIsHere = songsChar[i].wordIsHere;
-                songs[i].yearIsKnown = songsChar[i].yearIsKnown;
-                songs[i].yearOfRelease = songsChar[i].yearOfRelease;
+                }
+                system("pause");
+                system("cls");
             }
 
         }
+        else if (option == 7)
+        {
 
+        }
     }
 
     delete[] songs;
