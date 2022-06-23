@@ -1,3 +1,7 @@
+//  Экзаменационная работа "каталог текстов песен"
+//  Выполнил Артём Миллер
+//  06/23/2022
+//
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -14,18 +18,6 @@ int main()
 {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
-    /*string filename = "";
-    ifstream fileIn;
-    fileIn.open(filename);
-    if (fileIn.fail())
-    {
-        cout << "Error opening file!\a";
-        return 404;
-    }
-    fileIn.close();
-    ofstream fileOut;
-    fileOut.open(filename);
-    fileOut.close();*/
 
     int countOfAllSongs = 1;
 
@@ -248,6 +240,82 @@ int main()
         }
         else if (option == 7)
         {
+            string rusAlphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            string word;
+            cout << "   --------------------------------------------------------------\n";
+            cout << "   |       УКАЖИТЕ СЛОВО ПО КОТОРОМУ ХОТИТЕ НАЙТИ ПЕСНИ         |\n";
+            cout << "   --------------------------------------------------------------\n\n   -";
+            cin >> word;
+            for (size_t i = 0; i < countOfAllSongs; i++)
+            {
+                int k = 0;
+                while (songs[i].lyricOfSong[k] != '\0')
+                {
+                    string currentWord;
+                    for (; k < songs[i].lyricOfSong.length(); k++)
+                    {
+                        if ((songs[i].lyricOfSong[k] >= 32 && songs[i].lyricOfSong[k] <= 64) || (songs[i].lyricOfSong[k] >= 91 && songs[i].lyricOfSong[k] <= 96) || (songs[i].lyricOfSong[k] >= 123 && songs[i].lyricOfSong[k] <= 126))
+                        {
+                            break;
+                        }
+                        if ((songs[i].lyricOfSong[k] >= 65 && songs[i].lyricOfSong[k] <= 90) || (songs[i].lyricOfSong[k] >= 97 && songs[i].lyricOfSong[k] <= 122))
+                        {
+                            break;
+                        }
+                        for (size_t j = 0; j < rusAlphabet.length(); j++)
+                        {
+                            if (songs[i].lyricOfSong[k] == rusAlphabet[j])
+                            {
+                                currentWord += songs[i].lyricOfSong[k];
+                                break;
+                            }
+                        }
+                    }
+                    while ((songs[i].lyricOfSong[k] >= 65 && songs[i].lyricOfSong[k] <= 90) || (songs[i].lyricOfSong[k] >= 97 && songs[i].lyricOfSong[k] <= 122))
+                    {
+                        currentWord += songs[i].lyricOfSong[k];
+                        ++k;
+                    }
+                    if (currentWord == word)
+                    {
+                        songs[i].wordIsHere = true;
+                        break;
+                    }
+                    else
+                    {
+                        while ((songs[i].lyricOfSong[k] >= 32 && songs[i].lyricOfSong[k] <= 64) || (songs[i].lyricOfSong[k] >= 91 && songs[i].lyricOfSong[k] <= 96) || (songs[i].lyricOfSong[k] >= 123 && songs[i].lyricOfSong[k] <= 126))
+                        {
+                           
+                            ++k;
+                        }
+                    }
+                }
+
+            }
+            system("cls");
+            cout << "   --------------------------------------------------------------\n";
+            cout << "   |                       СПИСОК ВСЕХ ПЕСЕН                    |\n";
+            cout << "   --------------------------------------------------------------\n";
+
+            int tmpCount = 1;
+            for (size_t i = 0; i < countOfAllSongs; i++)
+            {
+                if (songs[i].wordIsHere == true)
+                {
+                    cout << "     " << tmpCount << " | " << "\"" << songs[i].nameOfSong << "\" ~ " << songs[i].songwriter_sName;
+                    if (songs[i].yearIsKnown)
+                    {
+                        cout << " ~ " << songs[i].yearOfRelease << endl;
+                    }
+                    else
+                    {
+                        cout << endl;
+                    }
+                    ++tmpCount;
+                }
+            }
+            system("pause");
+            system("cls");
 
         }
     }

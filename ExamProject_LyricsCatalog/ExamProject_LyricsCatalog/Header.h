@@ -13,7 +13,6 @@ struct Songs
 	string lyricOfSong;
 	bool yearIsKnown;
 	bool wordIsHere = false;
-
 	string yearOfRelease;
 };
 
@@ -26,8 +25,6 @@ struct SongsChar
 	bool wordIsHere = false;
 	char yearOfRelease[10];
 };
-
-
 
 int CheckForCorrect(int endOfRange);
 int MainMenu();

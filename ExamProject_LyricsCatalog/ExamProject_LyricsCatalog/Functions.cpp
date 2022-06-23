@@ -10,6 +10,12 @@ using std::cout;
 using std::cin;
 using std::endl;
 
+/// <summary>
+/// проверяет на корректность введёное число.
+/// диапазон от нуля до числа заданного аргументом функции + 1
+/// </summary>
+/// <param name="endOfRange">конец диапазона</param>
+/// <returns> корректно введёное пользователем число</returns>
 int CheckForCorrect(int endOfRange)
 {
 	int tmp;
@@ -29,10 +35,13 @@ int CheckForCorrect(int endOfRange)
 		}
 	}
 }
-
+/// <summary>
+/// выводит на экран главное меню и просит пользователя выбрать пункт
+/// </summary>
+/// <returns>введёное пользователем число для выбора пункта меню</returns>
 int MainMenu()
 {
-    //system("cls");
+    system("cls");
     cout << "   |                         МЕНЮ                           |\n";
     cout << "   ----------------------------------------------------------\n";
     cout << "   ----------------------------------------------------------\n";
@@ -67,7 +76,10 @@ int MainMenu()
     system("cls");
     return option;
 }
-
+/// <summary>
+/// выводит на экран меню для выбора способа внесения песни в список и просит выбрать пункт
+/// </summary>
+/// <returns>введёное пользователем число для выбора пункта меню</returns>
 int InputTextMenu()
 {
     cout << "   ----------------------------------------------------------\n";
@@ -87,7 +99,10 @@ int InputTextMenu()
     system("cls");
     return option;
 }
-
+/// <summary>
+/// выводит на экран меню для выбора способа изменения текста песни и просит выбрать пункт
+/// </summary>
+/// <returns>введёное пользователем число для выбора пункта меню</returns>
 int ChangeTextMenu()
 {
     cout << "   ----------------------------------------------------------\n";
@@ -104,7 +119,12 @@ int ChangeTextMenu()
     system("cls");
     return option;
 }
-
+/// <summary>
+/// Выводит на экран список песен, а также предоставляет возможность выбрать песню для просмотра её текста
+/// </summary>
+/// <param name="obj">указатель на массив структур</param>
+/// <param name="countOfAllSongs">текущее количество песен</param>
+/// <returns></returns>
 int ShowListOfSongs(const Songs* obj, int countOfAllSongs)
 {
     cout << "   --------------------------------------------------------------\n";
@@ -126,7 +146,11 @@ int ShowListOfSongs(const Songs* obj, int countOfAllSongs)
     }
     return tmpCount;
 }
-
+/// <summary>
+/// функция для ввода текста с клавиатуры пока пользователь не захочет прекратить ввод
+/// </summary>
+/// <param name="obj">указатель на массив структур</param>
+/// <param name="song">индекс определённой структуры или текущее количество песен</param>
 void InputText(Songs* obj, int song)
 {
     int countOfStrings = 1;
@@ -160,7 +184,12 @@ void InputText(Songs* obj, int song)
         }
     }
 }
-
+/// <summary>
+/// функция для добавления структуры песни с вводом текста с клавиатуры
+/// </summary>
+/// <param name="obj">указатель на массив структур</param>
+/// <param name="countOfAllSongs">текущее количество песен</param>
+/// <returns>указатель на новый массив структур</returns>
 Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
 {
     countOfAllSongs++;
@@ -189,7 +218,13 @@ Songs* InputTextFromKeyboard(Songs* obj, int& countOfAllSongs)
 
     return obj;
 }
-
+/// <summary>
+/// внесение либо одной песни либо целого каталога песен из файла
+/// </summary>
+/// <param name="obj">указатель на массив структур</param>
+/// <param name="fileIn">ссылка на переменную открывающую поток ввода</param>
+/// <param name="countOfAllSongs">текущее количество песен</param>
+/// <returns></returns>
 Songs* InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
 {
     countOfAllSongs++;
@@ -243,7 +278,12 @@ Songs* InputTextFromFile(Songs* obj, ifstream& fileIn, int& countOfAllSongs)
     system("cls");
     return obj;
 }
-
+/// <summary>
+/// функция для пересоздания массива структур с заданным количеством
+/// </summary>
+/// <param name="obj">указатель на массив структур</param>
+/// <param name="count">требуемое количество структур в новом массиве</param>
+/// <returns></returns>
 Songs* AddSong(Songs* obj, int count)
 {
     Songs* tempObj = new Songs[count];
@@ -261,8 +301,12 @@ Songs* AddSong(Songs* obj, int count)
     obj = tempObj;
     return obj;
 }
-
-
+/// <summary>
+/// показывает список авторов каждой песни
+/// </summary>
+/// <param name="obj">указатель на массив структур</param>
+/// <param name="count">количество песен</param>
+/// <returns></returns>
 int ShowListOfAuthors(Songs* obj, int count)
 {
     cout << "   --------------------------------------------------------------\n";
