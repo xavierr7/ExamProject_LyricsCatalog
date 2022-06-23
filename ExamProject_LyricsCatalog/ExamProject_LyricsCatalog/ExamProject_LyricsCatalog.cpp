@@ -201,6 +201,9 @@ int main()
             fileOut.close();
 
             delete[] songsChar;
+            cout << "Готово!\n";
+            system("pause");
+            system("cls");
         }
         else if (option == 6)
         {
@@ -284,7 +287,7 @@ int main()
                     {
                         while ((songs[i].lyricOfSong[k] >= 32 && songs[i].lyricOfSong[k] <= 64) || (songs[i].lyricOfSong[k] >= 91 && songs[i].lyricOfSong[k] <= 96) || (songs[i].lyricOfSong[k] >= 123 && songs[i].lyricOfSong[k] <= 126))
                         {
-                           
+
                             ++k;
                         }
                     }
@@ -316,6 +319,10 @@ int main()
             system("pause");
             system("cls");
 
+        }
+        else
+        {
+            break;
         }
     }
 
